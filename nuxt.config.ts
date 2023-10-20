@@ -6,15 +6,6 @@ export default defineNuxtConfig({
     alias: {
         "@": "./",
     },
-    app: {
-      head: {
-        script: [
-          {
-            src: 'https://unpkg.com/vue@3.3.4/dist/vue.global.js'
-          }
-        ]
-      }
-    },
     vite: {
         plugins: [
             // viteExternalsPlugin({
