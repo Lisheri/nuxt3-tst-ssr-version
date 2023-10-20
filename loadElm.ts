@@ -39,5 +39,6 @@ const loadModuleEval = async (url: string) => {
 export const loadServerElement = async function (version: string) {
   // await loadModule(`https://unpkg.com/vue@3.3.4`);
   // await loadModule(`https://unpkg.com/element-plus@${version}`);
-  await loadModuleEval(`https://unpkg.com/element-plus@${version}`);
+  // await loadModuleEval(`https://unpkg.com/element-plus@${version}`);
+  await loadModuleEval(`https://fastly.jsdelivr.net/npm/vant@${version}/lib/vant.min.js`)
 }
