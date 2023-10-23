@@ -1,5 +1,6 @@
 import axios from 'axios'
 import vm from 'vm';
+import * as vue from 'vue';
 
 // 'https://unpkg.com/dayjs/plugin/customParseFormat.js',
 // const plugins = [
@@ -28,17 +29,23 @@ import vm from 'vm';
 const loadModule = async (url: string) => {
   const { data } = await axios.get(url);
   const script = new vm.Script(data);
+  global.Vue = vue;
   await script.runInThisContext();
 }
 
-const loadModuleEval = async (url: string) => {
-  const { data } = await axios.get(url);
-  eval(data);
-}
+// const loadModuleEval = async (url: string) => {
+//   const { data } = await axios.get(url);
+//   if (process.env.NODE_ENV === 'production') {
+//     // 生产环境下单独设置vue, 用于vant初始化
+//     global.Vue = vue;
+//   }
+//   const res = eval(data);
+// }
 
 export const loadServerElement = async function (version: string) {
   // await loadModule(`https://unpkg.com/vue@3.3.4`);
   // await loadModule(`https://unpkg.com/element-plus@${version}`);
   // await loadModuleEval(`https://unpkg.com/element-plus@${version}`);
-  await loadModuleEval(`https://fastly.jsdelivr.net/npm/vant@${version}/lib/vant.min.js`)
+  // await loadModuleEval(`https://cdn.bootcdn.net/ajax/libs/vant/${version}/vant.min.js`)
+  await loadModule(`https://cdn.bootcdn.net/ajax/libs/vant/${version}/vant.min.js`);
 }

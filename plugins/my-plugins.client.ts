@@ -9,14 +9,10 @@ export default defineNuxtPlugin(async (nuxtApp) => {
       await appendNode(
         NodeType.Script,
         // `https://unpkg.com/element-plus@${version}`,
-        `https://fastly.jsdelivr.net/npm/vant@${version}/lib/vant.min.js`,
+        `https://cdn.bootcdn.net/ajax/libs/vant/${version}/vant.min.js`,
         () => {
           const elementPlus = (window as any).vant;
           nuxtApp.vueApp.use(elementPlus);
-          nuxtApp.vueApp.provide(elementPlus.ID_INJECTION_KEY, {
-            prefix: Math.floor(Math.random() * 10000),
-            current: 0,
-          });
         }
       )
     };

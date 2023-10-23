@@ -32,7 +32,7 @@ export default defineComponent({
     };
     return () => (
       <van-pull-refresh v-model={loading.value} onRefresh={onRefresh} style={{ height: "100vh", overflow: 'auto' }}>
-        <p>刷新次数: {count.value}</p>
+        {/* <p>刷新次数: {count.value}</p> */}
         <van-form onSubmit={onSubmit}>
           <van-cell-group inset>
             <van-field
